@@ -3,6 +3,8 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var fs = require('fs');
 
+const dateTimeHelper = require('lib/helpers/dateTimeHelper');
+
 var app = express();
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
@@ -54,5 +56,6 @@ var listener = app.listen(8088, function(){
     var host = listener.address().address;
     var port = listener.address().port;
 
+    console.log('App started at %s', dateTimeHelper.currentDateTime());
     console.log('App listening at http://%s:%s', host, port);
 });
